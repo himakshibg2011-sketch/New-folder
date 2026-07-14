@@ -205,13 +205,13 @@ main{
     content: "";
     position: absolute;
 
-    top:-45px;
+    top:-77px;
     left:935%;
 
     transform: translate(-50%) rotate(-45deg);
 
     width: 3.5px;
-    height: 335px;
+    height: 400px;
 
     background: #243038;
 
@@ -246,5 +246,75 @@ main{
     max-width: 650px;
 
     margin-bottom: 18px;
+    
+}
+
+.cta-section{
+
+    text-align: center;
+    margin: 120px 0;
+}
+
+
+.recipe-btn{
+
+    display: inline-block;
+
+    background: #243038;
+    color:white;
+
+    font-family: "Sniglet", cursive;
+    font-size:28px;
+
+    text-decoration: none;
+    padding: 20px 50px;
+
+    border-radius: 50px;
+
+    transition: 0.3s ease;
+}
+
+
+.recipe-btn:hover{
+
+    background: #364852;
+    transform: scale(1.05);
+}
+
+
+/* ---------- Footer ---------- */
+
+
+
+.footer{
+
+    width: 100%;
+    background: #243038;
+    color: white;
+
+    text-align:center;
+
+    padding: 25px 0px;
+
+    margin-top: 130px;
+
+}
+
+
+
+.footer p{
+
+    font-family: "Poppins", sans-serif;
+    font-size: 17px;
+    margin: 0;
+
+}
+
+
+.footer strong{
+
+    font-family: "Sniglet", cursive;
+    font-size: 18px;
+    font-weight: 800;
     
 }
