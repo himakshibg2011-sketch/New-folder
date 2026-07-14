@@ -1,0 +1,250 @@
+/* ---------- Reset ---------- */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    overflow-x:hidden;
+}
+
+/* ---------- Navigation ---------- */
+
+header{
+    width:100%;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:1000;
+    margin:0;
+    padding: 0;
+}
+
+.navbar{
+
+    width:100%;
+    height: 40px;
+    background-color: #243038;
+
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+
+    padding: 0 50px;
+   
+}
+
+
+.logo{
+    
+    margin-right: auto;
+}
+
+
+.nav-links{
+
+    display:flex;
+    list-style:none;
+    gap:35px;
+
+    margin:0;
+    padding:0;
+    align-items: flex-start;
+}
+
+
+
+.nav-links li{
+
+    display:inline-block;
+}
+
+
+.nav-links a{
+
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    transition: 0.3s;
+    font-family:"Poppins", sans-serif;
+    padding-top:2px;
+    transition: 0.3s;
+    display:block;
+}
+
+
+.nav-links a:hover{
+
+    color: #d9d9d9;
+
+}
+
+
+.nav-links .active{
+
+    border-bottom: 2px solid white;
+
+}
+
+
+/* ---------- Homepage ---------- */
+
+main{
+
+    padding-top:40px;
+}
+
+.hero-image{
+
+    display:block;
+    width:100%;
+    height:550px;
+    
+}
+
+.how-section{
+
+    width:100%;
+    background: #243038;
+    padding: 60px 0;
+    ;
+}
+
+.how-to-use{
+
+    width:80%;
+    margin:0 auto;
+    color:white;
+
+}
+
+.how-to-use h2{
+
+    font-size: 38px;
+    margin-bottom: 35px;
+    text-align: center;
+              
+}
+
+
+.how-to-use p{
+
+    font-size:20px;
+    line-height:1.8;
+    margin-bottom: 18px;
+}
+
+.divider{
+
+    width:100%;
+    height:230px;
+    background: #243038;
+}
+
+
+.about-section{
+
+    margin-top: 200px;
+    text-align: center;
+}
+
+
+.about-section h1{
+
+    font-family: "Sniglet", cursive;
+    font-size: 42px;
+    color: #243038;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: normal;
+    font-weight: 800;
+}
+
+
+.timeline{
+
+    width:80%;
+    margin: 50px auto;
+
+}
+
+
+.timeline-item{
+
+    display:flex;
+    align-items:flex-start;
+
+}
+
+
+.marker{
+
+    width:13px;
+    height: 13px;
+    background: #243038;
+
+    transform: rotate(45deg);
+    margin-right: 25px;
+    margin-top: 10px;
+
+    position: relative;
+
+}
+
+
+
+.marker::after{
+
+    content: "";
+    position: absolute;
+
+    top:-45px;
+    left:935%;
+
+    transform: translate(-50%) rotate(-45deg);
+
+    width: 3.5px;
+    height: 335px;
+
+    background: #243038;
+
+}
+
+
+.content{
+
+    text-align: left;
+
+}
+
+
+.content h3{
+
+    font-family: "Sniglet", cursive;
+    font-size: 27px;
+    color: #243038;
+    margin-bottom: 15px;
+
+}
+
+
+.content p{
+
+    font-family: "Poppins", sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+    color: #243038;
+
+    text-align: left;
+    max-width: 650px;
+
+    margin-bottom: 18px;
+    
+}
