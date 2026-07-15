@@ -318,3 +318,214 @@ main{
     font-weight: 800;
     
 }
+
+
+
+/*                 RECIPE PAGE                        */
+
+
+.recipe-page{
+
+    padding-top: 100px;
+    padding-bottom: 80px;
+
+}
+
+
+.recipe-page h1{
+
+    text-align:center;
+    font-family:"Sniglet", cursive;
+    font-size:40px;
+    color: #243038;
+    margin-bottom:50px;
+
+}
+
+
+.recipe-container{
+
+    width:65%;
+    margin:auto;
+
+    background:#f7f7f7;
+
+    padding: 40px;
+
+    border-radius:20px;
+
+    box-shadow:0 4px 15px rgba(0,0,0,0.12);
+    
+}
+
+.recipe-container label{
+
+    display:block;
+
+    font-family:"Poppins", sans-serif;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    color:#243038;
+
+    margin-top: 25px;
+    margin-bottom: 10px;
+
+}
+
+
+.recipe-container input{
+
+    width:100%;
+
+    padding:14px;
+
+    font-size:17px;
+
+    font-family: "Poppins", sans-serif;
+
+    border:2px solid #243038;
+
+    border-radius:10px;
+
+    outline:none;
+
+}
+
+
+.recipe-container hr{
+
+    margin:40px 0;
+
+    border:none;
+
+    border-top:2px solid #d9d9d9;
+
+}
+
+
+.recipe-container h2{
+
+    font-family:"Sniglet", cursive;
+
+    font-size:30px;
+
+    color:#243038;
+
+    margin-bottom: 20px;
+
+}
+
+
+.add-btn{
+
+    margin-top:30px;
+
+    background:#243038;
+
+    color:white;
+
+    border:none;
+
+    padding: 14px 20px;
+
+    border-radius:30px;
+
+    font-family:"Poppins", sans-serif;
+
+    font-size:16px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+}
+
+
+
+.add-btn:hover{
+
+    background:#364852;
+
+}
+
+
+.colour-preview{
+
+    width:170px;
+
+    height:170px;
+
+    border:3px solid #243038;
+
+    border-radius:15px;
+
+    margin:25px auto;
+
+    background:white;
+
+}
+
+
+
+.recipe-container p{
+
+    Font-family:"Poppins", sans-serif;
+
+    font-size:18px;
+
+    color: #243038;
+
+    margin-bottom:12px;
+
+}
+
+
+.button-group{
+
+    margin-top:40px;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:25px;
+
+}
+
+
+
+.save-btn,
+.clear-btn{
+
+    background:#243038;
+
+    color:white;
+
+    border:none;
+
+    padding:15px 40px;
+
+    border-radius:40px;
+
+    font-family:"Sniglet", cursive;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+.save-btn:hover,
+.clear-btn:hover{
+
+    background:#364852;
+
+    transform:scale(1.05);
+    
+}
