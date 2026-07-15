@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make Recipe</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Sniglet:wght@400;800&display=swap" rel="stylesheet">
+
+      <link rel="stylesheet" href="../style.css">
+      </head>
+
+      <body>
+
+        <header>
+
+            <nav class="navbar">
+
+                <div class="logo"></div>
+
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="recipe.html" class="active">Make Recipe</a></li>
+                    <li><a href="history.html">History</a></li>
+
+                    </ul>
+
+                    </nav>
+        </header>
+
+        <main class="recipe-page">
+
+            <h1>MAKE YOUR RECIPE</h1>
+
+            <div class="recipe-container">
+
+                <label>Recipe Name</label>
+                <input type="text" placeholder="Enter recipe name">
+
+                <label>Number Of Paints</label>
+                <input type="number" min="1" placeholder="Enter number of paints">
+
+                <hr>
+
+                <h2> Paint 1</h2>
+
+                <label>HEX/RGB colour code</label>
+                <input type="text" placeholder="#FFFFFF or rgb(255,255,255)">
+
+                <label>Number Of Drops</label>
+                <input type="number" min="1" placeholder="Drops">
+
+                <button class="add-btn">+ ADD ANOTHER PAINT</button>
+
+                <hr>
+
+                <h2> OUTPUT</h2>
+
+                <div class="colour-preview"></div>
+
+                <p><strong>Shade Name:</strong></p>
+
+                <p><strong>HEX:</strong></p>
+                <p><strong>RGB:</strong></p>
+                <p><strong>Total Drops:</strong></p>
+
+                <div class="button-group">
+                    <button class="save-btn">SAVE RECIPE</button>
+                    <button class="clear-btn">CLEAR</button>
+
+                    </div>
+
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>Created by <strong> Sunshine and Rainbows (Texi)</strong></p>
+        </footer>
+      </body>
+</html>
