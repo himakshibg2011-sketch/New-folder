@@ -472,7 +472,7 @@ main{
 
 .recipe-container p{
 
-    Font-family:"Poppins", sans-serif;
+    font-family:"Poppins", sans-serif;
 
     font-size:18px;
 
@@ -527,5 +527,70 @@ main{
     background:#364852;
 
     transform:scale(1.05);
-    
+
+}
+
+
+#paintContainer{
+
+    margin-top:20px;
+}
+
+
+.paint-box{
+
+    margin-top:30px;
+
+    padding:25px;
+
+    border:2px solid #243038;
+
+    border-radius:15px;
+
+    background:white;
+
+}
+
+
+
+.paint-box h2{
+
+    font-family:"Sniglet", cursive;
+
+    font-size:20px;
+
+    color:#243038;
+
+    margin-bottom:20px;
+
+}
+
+
+.paint-number{
+
+    display:flex;
+    gap:15px;
+    align-items:center;
+
+}
+
+
+#generateBtn{
+
+    background:#243038;
+    color:white;
+    border:none;
+    padding:14px 24px;
+    border-radius: 18px;
+    cursor:pointer;
+    font-family:"Poppins", sans-serif;
+    font-size:16px;
+    transition:0.3s;
+
+}
+
+
+#generateBtn:hover{
+
+    background:#364852;
 }
