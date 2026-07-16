@@ -13,6 +13,10 @@ body{
     margin:0;
     font-family:Arial, Helvetica, sans-serif;
     overflow-x:hidden;
+
+    display: flex;
+    flex-direction:column;
+    min-height:100vh;
 }
 
 /* ---------- Navigation ---------- */
@@ -25,6 +29,7 @@ header{
     z-index:1000;
     margin:0;
     padding: 0;
+
 }
 
 .navbar{
@@ -294,9 +299,11 @@ main{
 
     text-align:center;
 
-    padding: 25px 0px;
+    padding: 45px 0px;
 
-    margin-top: 130px;
+    margin-top: 0px;
+
+    flex-shrink: 0;
 
 }
 
@@ -327,7 +334,11 @@ main{
 .recipe-page{
 
     padding-top: 100px;
-    padding-bottom: 80px;
+    padding-bottom: 18px;
+
+    background:#eef3f5;
+
+    flex:1;
 
 }
 
@@ -348,13 +359,17 @@ main{
     width:65%;
     margin:auto;
 
-    background:#f7f7f7;
+    background:linear-gradient(100deg,#ffffff,#f8f9fb);
 
-    padding: 40px;
+    padding: 45px;
 
-    border-radius:20px;
+    border-radius:30px;
 
-    box-shadow:0 4px 15px rgba(0,0,0,0.12);
+    border:3px solid #758a97;
+
+    box-shadow:
+    0 15px 35px rgba(0,0,0,.08),
+    0 5px 12px rgba(0,0,0,.05);
     
 }
 
@@ -380,7 +395,7 @@ main{
 
     width:100%;
 
-    padding:14px;
+    padding:15px;
 
     font-size:17px;
 
@@ -388,10 +403,23 @@ main{
 
     border:2px solid #243038;
 
-    border-radius:10px;
+    border-radius:14px;
+
+    background:white;
+
+    transition:.3s;
 
     outline:none;
 
+}
+
+
+
+.recipe-container input:focus{
+
+    border-color:#243038;
+
+    box-shadow:0 0 10px rgba(36,40,56,.15);
 }
 
 
@@ -421,7 +449,7 @@ main{
 
 .add-btn{
 
-    margin-top:30px;
+    margin-top:0px;
 
     background:#243038;
 
@@ -429,7 +457,9 @@ main{
 
     border:none;
 
-    padding: 14px 20px;
+    padding: 14px 24px;
+
+    height:50px;
 
     border-radius:30px;
 
@@ -541,13 +571,15 @@ main{
 
     margin-top:30px;
 
-    padding:25px;
+    padding:28px;
 
-    border:2px solid #243038;
+    border:2px solid #dbe3e8;
 
-    border-radius:15px;
+    border-radius:22px;
 
     background:white;
+
+    box-shadow:0 8px 18px rgba(0,0,0,.05);
 
 }
 
@@ -619,3 +651,58 @@ main{
 
     transform: scale(1.05);
 }
+
+
+.colourHint{
+
+    display:block;
+    margin-top:8px;
+    margin-bottom:12px;
+
+    font-family:"Poppins", sans-serif;
+    font-size:14px;
+    color:#666;
+    font-style:italic;
+
+}
+
+
+.remove-btn{
+
+    background:#c85b5b;
+    color:white;
+
+    border:none;
+    padding:14px 24px;
+
+    height: 50px;
+
+    border-radius:30px;
+
+    font-family:"Poppins", sans-serif;
+    font-size:16px;
+
+    cursor:pointer;
+    transition:.3s;
+
+}
+
+
+.remove-btn:hover{
+
+    background:#b24747;
+    transform:scale(1.05);
+}
+
+
+.paint-buttons{
+
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top:30px;
+    margin-bottom:20px;
+
+}
+

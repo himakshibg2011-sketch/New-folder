@@ -7,6 +7,7 @@ const clearBtn = document.getElementById("clearBtn");
 const saveBtn = document.getElementById("saveBtn");
 const mixBtn = document.getElementById("mixBtn");
 const paintCountInput = document.getElementById("paintCount");
+const removeBtn = document.getElementById("removePaintBtn");
 
 
 function createPaintBox(number) {
@@ -18,15 +19,31 @@ function createPaintBox(number) {
     <h2>Paint ${number}</h2>
 
     <label>HEX/RGB Colour Code</label>
-    <input type="text" class="paintColour" placeholder="#FFFFFF or rgb(255,255,255)">
+
+    <input
+    type="text"
+    class="paintColour"
+    placeholder="Example: #FF5733 or rgb(255,87,51)"
+    >
+
+    <small class="colourHint">
+    Accepted formats: <strong>#RRGGBB</strong> or <strong>rgb(r,g,b)</strong>
+    </small>
 
     <label>Number Of Drops</label>
-    <input type="number" class="paintDrops" min="1" placeholder="Drops">
-     `;
+    <input
+    type="number"
+    class="paintDrops"
+    min="1"
+    placeholder="Drops"
+    >
+    `;
+    
 
      paintContainer.appendChild(box);
 
 }
+
 
 createBtn.addEventListener("click", function () {
 
@@ -56,6 +73,24 @@ addBtn.addEventListener("click", function () {
     createPaintBox(paintNumber);
 
 });
+
+
+removeBtn.addEventListener("click", function () {
+
+    const paintBoxes = document.querySelectorAll(".paint-box");
+
+    if (paintBoxes.length > 0) {
+
+        paintBoxes[paintBoxes.length - 1].remove();
+        paintNumber--;
+
+    } else {
+        alert("There are no paint boxes to remove.");
+    }
+
+});
+
+
 
 clearBtn.addEventListener("click", function () {
 
@@ -98,19 +133,50 @@ mixBtn.addEventListener("click", function () {
         let colour = colours[i].value.trim();
         let drop = parseInt(drops[i].value);
 
-        if (!colour.startsWith("#")) {
-            alert("Please enter HEX colours only for now.");
-            return;
+        let r, g, b;
+
+        if (colour.startsWith("#")) {
+
+            if (colour.length !==7) {
+                alert("Invalid HEX colour.");
+                return;
+            }
+
+            r = parseInt(colour.substring(1,3),16);
+            g = parseInt(colour.substring(3,5),16);
+            b = parseInt(colour.substring(5,7),16);
         }
 
-        if (colour.length !==7) {
-            alert("Invalid HEX colour.");
-            return;
+
+        else if (colour.toLowerCase().startsWith("rgb")) {
+
+            let values = colour.match(/\d+/g);
+
+            if (!values || values.length !==3) {
+                alert("Invalid RGB colour.");
+                return;
+            }
+
+            r = parseInt(values[0]);
+            g = parseInt(values[1]);
+            b = parseInt(values[2]);
+
+            if (
+                r < 0 || r > 255 ||
+                g < 0 || g > 255 ||
+                b < 0 || b > 255
+
+            ) {
+                alert("RGB values must be between 0 and 255.");
+                return;
+            }
         }
 
-        let r = parseInt(colour.substring(1,3),16);
-        let g = parseInt(colour.substring(3,5),16);
-        let b = parseInt(colour.substring(5,7),16);
+        else {
+
+            alert("Enter a HEX (#RRGGBB) or RGB (rgb(r,g,b)) colour.");
+            return;
+        }
 
         red += r * drop;
         green += g * drop;
@@ -142,3 +208,6 @@ mixBtn.addEventListener("click", function () {
     document.getElementById("shadeName").textContent = "Custom Shade";
 
 });
+
+
+
