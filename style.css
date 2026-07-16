@@ -594,3 +594,28 @@ main{
 
     background:#364852;
 }
+
+
+.mix-btn{
+
+    display:block;
+    margin:30px auto;
+    background: #243038;
+    color:white;
+    border:none;
+    padding:15px 40px;
+    border-radius:40px;
+    font-family:"Sniglet", cursive;
+    font-size:22px;
+    cursor:pointer;
+    transition:0.3s;
+
+}
+
+
+.mix-btn:hover{
+
+    background: #364852;
+
+    transform: scale(1.05);
+}

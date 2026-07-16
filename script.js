@@ -5,7 +5,9 @@ const createBtn = document.getElementById("generateBtn");
 const addBtn = document.getElementById("addPaintBtn");
 const clearBtn = document.getElementById("clearBtn");
 const saveBtn = document.getElementById("saveBtn");
+const mixBtn = document.getElementById("mixBtn");
 const paintCountInput = document.getElementById("paintCount");
+
 
 function createPaintBox(number) {
 
@@ -79,4 +81,64 @@ saveBtn.addEventListener("click", function () {
     alert("Recipe saved!");
 });
 
-    
+
+mixBtn.addEventListener("click", function () {
+
+    const colours = document.querySelectorAll(".paintColour");
+    const drops = document.querySelectorAll(".paintDrops");
+
+    let totalDrops = 0;
+
+    let red = 0;
+    let green = 0;
+    let blue = 0;
+
+    for (let i = 0; i < colours.length; i++) {
+
+        let colour = colours[i].value.trim();
+        let drop = parseInt(drops[i].value);
+
+        if (!colour.startsWith("#")) {
+            alert("Please enter HEX colours only for now.");
+            return;
+        }
+
+        if (colour.length !==7) {
+            alert("Invalid HEX colour.");
+            return;
+        }
+
+        let r = parseInt(colour.substring(1,3),16);
+        let g = parseInt(colour.substring(3,5),16);
+        let b = parseInt(colour.substring(5,7),16);
+
+        red += r * drop;
+        green += g * drop;
+        blue += b * drop;
+
+        totalDrops += drop;
+
+    }
+
+    red = Math.round(red / totalDrops);
+    green = Math.round(green / totalDrops);
+    blue = Math.round(blue / totalDrops);
+
+    let mixedColour =
+    "#" +
+    red.toString(16).padStart(2,"0") +
+    green.toString(16).padStart(2,"0") +
+    blue.toString(16).padStart(2,"0");
+
+    document.getElementById("colourPreview").style.background = mixedColour;
+
+    document.getElementById("hexValue").textContent = mixedColour.toUpperCase();
+
+    document.getElementById("rgbValue").textContent =
+    `rgb(${red}, ${green}, ${blue})`;
+
+    document.getElementById("totalDrops").textContent = totalDrops;
+
+    document.getElementById("shadeName").textContent = "Custom Shade";
+
+});
