@@ -901,3 +901,54 @@ main{
     background:#c85b5b;
     
 }
+
+
+#searchInput{
+
+    width: 350px;
+
+    padding:14px;
+
+    border:3px solid #243038;
+
+    border-radius:20px;
+
+    font-family:"Poppins", sans-serif;
+
+    font-size:16x;
+
+    outline:none;
+
+}
+
+
+#searchInput:focus{
+
+    box-shadow:0 0 18px rgba(36,48,56,.15);
+}
+
+#sortSelect{
+
+    width:220px;
+
+    padding:12px;
+
+    border:3px solid #243038;
+
+    border-radius:20px;
+
+    font-family:"Poppins", sans-serif;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    outline:none;
+
+}
+
+#sortSelect:focus{
+
+    box-shadow:0 0 18px rgba(36,48,56,.15);
+    
+}

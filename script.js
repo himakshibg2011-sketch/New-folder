@@ -137,7 +137,9 @@ saveBtn.addEventListener("click", function () {
         shade: document.getElementById("shadeName").textContent,
         hex: document.getElementById("hexValue").textContent,
         rgb: document.getElementById("rgbValue").textContent,
-        drops: document.getElementById("totalDrops").textContent
+        drops: document.getElementById("totalDrops").textContent,
+
+        date: new Date().toLocaleString()
 
     };
 
@@ -274,6 +276,7 @@ copyRgbBtn.addEventListener("click", function() {
 
 const historyContainer = document.getElementById("historyContainer");
 const clearHistoryBtn = document.getElementById("clearHistoryBtn");
+const searchInput = document.getElementById("searchInput");
 
 if (historyContainer) {
 
@@ -281,11 +284,21 @@ if (historyContainer) {
 
 }
 
-function displayRecipes() {
+if (searchInput) {
+
+    searchInput.addEventListener("input", function () {
+
+        displayRecipes(this.value);
+
+    });
+    
+}
+
+function displayRecipes(searchText = "") {
 
     historyContainer.innerHTML = "";
 
-    const recipes =
+    let recipes =
     JSON.parse(localStorage.getItem("recipes")) || [];
 
     if (recipes.length === 0) {
@@ -296,7 +309,11 @@ function displayRecipes() {
         return;
     }
 
-    recipes.forEach((recipe, index) => {
+    recipes
+    .filter(recipe =>
+        recipe.name.toLowerCase().includes(searchText.toLowerCase())
+    )
+    .forEach((recipe, index) => {
 
         const card = document.createElement("div");
 
@@ -319,6 +336,7 @@ function displayRecipes() {
         <p><strong>HEX:</strong> ${recipe.hex}</p>
         <p><strong>RGB:</strong> ${recipe.rgb}</p>
         <p><strong>Total Drops:</strong> ${recipe.drops}</p>
+        <p><strong>Saved:</strong> ${recipe.date}</p>
         
         <button class="delete-btn"
         onclick="deleteRecipe(${index})">
