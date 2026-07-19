@@ -46,6 +46,7 @@ function createPaintBox(number) {
 
 }
 
+if (createBtn) {
 
 createBtn.addEventListener("click", function () {
 
@@ -115,12 +116,19 @@ clearBtn.addEventListener("click", function () {
 
 saveBtn.addEventListener("click", function () {
 
-    const recipeName = document.getElementById("recipeName").value;
+    const recipeName = document.getElementById("recipeName").value.trim();
 
     if (recipeName === "") {
 
         alert("Please enter a recipe name.");
         return;
+    }
+
+    if (document.getElementById("hexValue").textContent === "-") {
+
+        alert("Please mix the colours before saving.");
+        return;
+
     }
 
     const recipe = {
@@ -259,3 +267,103 @@ copyRgbBtn.addEventListener("click", function() {
     alert("RGB copied!");
 
 });
+
+}
+
+/* =========================== HISTORY PAGE heheh=========================== */
+
+const historyContainer = document.getElementById("historyContainer");
+const clearHistoryBtn = document.getElementById("clearHistoryBtn");
+
+if (historyContainer) {
+
+    displayRecipes();
+
+}
+
+function displayRecipes() {
+
+    historyContainer.innerHTML = "";
+
+    const recipes =
+    JSON.parse(localStorage.getItem("recipes")) || [];
+
+    if (recipes.length === 0) {
+
+        historyContainer.innerHTML =
+        "<p style='text-align:center;'>No recipes saved yet.</p>";
+
+        return;
+    }
+
+    recipes.forEach((recipe, index) => {
+
+        const card = document.createElement("div");
+
+        card.className = "history-card";
+
+        card.innerHTML = `
+        <div class="history-top">
+        
+        <div>
+        
+        <h2>${recipe.name}</h2>
+        <p><strong>Shade:</strong> ${recipe.shade}</p>
+        </div>
+        
+        <div class="history-preview"
+        style="background:${recipe.hex}">
+        </div>
+        
+        </div>
+        <p><strong>HEX:</strong> ${recipe.hex}</p>
+        <p><strong>RGB:</strong> ${recipe.rgb}</p>
+        <p><strong>Total Drops:</strong> ${recipe.drops}</p>
+        
+        <button class="delete-btn"
+        onclick="deleteRecipe(${index})">
+        
+        Delete Recipe
+        
+        </button>
+        `;
+
+        historyContainer.appendChild(card);
+
+    });
+
+}
+
+
+function deleteRecipe(index) {
+
+    const recipes =
+    JSON.parse(localStorage.getItem("recipes")) || [];
+
+    recipes.splice(index, 1);
+
+    localStorage.setItem(
+        "recipes",
+        JSON.stringify(recipes)
+
+    );
+
+    displayRecipes();
+
+}
+
+
+if (clearHistoryBtn) {
+
+    clearHistoryBtn.addEventListener("click", function () {
+
+        if (confirm("Delete all saved recipes?")) {
+
+            localStorage.removeItem("recipes");
+
+            displayRecipes();
+        }
+
+    });
+
+}

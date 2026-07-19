@@ -299,7 +299,7 @@ main{
 
     text-align:center;
 
-    padding: 45px 0px;
+    padding: 35px 0px;
 
     margin-top: 0px;
 
@@ -725,5 +725,179 @@ main{
     cursor:pointer;
 
     font-size:13px;
+    
+}
+
+/* ---------------- HISTORY PAGE ---------------- */
+
+.history-page{
+
+    padding-top:100px;
+    padding-bottom:80px;
+
+    background:#eef3f5;
+
+    min-height:100vh;
+
+}
+
+
+.history-page h1{
+
+    text-align:center;
+
+    font-family:"Sniglet", cursive;
+
+    font-size:40px;
+
+    color:#243038;
+
+    margin-bottom:50px;
+
+}
+
+
+.history-controls{
+
+    text-align:center;
+
+    margin-bottom:40px;
+
+}
+
+.clear-history-btn{
+
+    background:#b24747;
+
+    color:white;
+
+    border:none;
+
+    padding:15px 35px;
+
+    border-radius:40px;
+
+    font-family:"Sniglet", cursive;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+.clear-history-btn:hover{
+
+    background:#c85b5b;
+
+    transform: scale(1.05);
+
+}
+
+#historyContainer{
+
+    width:78%;
+
+    margin:auto;
+
+}
+
+
+.history-card{
+
+    background:white;
+    border:3px solid #758a97;
+
+    border-radius:25px;
+
+    padding:30px;
+    margin-bottom:30px;
+
+    box-shadow:0 8px 10px rgba(0,0,0,.08);
+
+
+}
+
+
+.history-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:20px;
+
+}
+
+
+.history-card h2{
+
+    font-family:"Sniglet", cursive;
+
+    font-size:20px;
+
+    color:#243038;
+
+}
+
+
+.history-preview{
+
+    width:80px;
+
+    height:80px;
+
+    border:3px solid #243038;
+
+    border-radius:18px;
+
+}
+
+
+.history-card p{
+
+    font-family:"Poppins", sans-serif;
+
+    font-size:17px;
+
+    color:#243038;
+
+    margin:10px 0;
+
+}
+
+
+.delete-btn{
+
+    margin-top:20px;
+
+    background:#b24747;
+
+    color:white;
+
+    border:none;
+
+    padding:12px 15px;
+
+    border-radius:25px;
+
+    font-family:"Poppins", sans-serif;
+
+    font-size:15px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+.delete-btn:hover{
+
+    background:#c85b5b;
     
 }
