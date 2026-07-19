@@ -8,6 +8,8 @@ const saveBtn = document.getElementById("saveBtn");
 const mixBtn = document.getElementById("mixBtn");
 const paintCountInput = document.getElementById("paintCount");
 const removeBtn = document.getElementById("removePaintBtn");
+const copyHexBtn = document.getElementById("copyHexBtn");
+const copyRgbBtn = document.getElementById("copyRgbBtn");
 
 
 function createPaintBox(number) {
@@ -113,7 +115,31 @@ clearBtn.addEventListener("click", function () {
 
 saveBtn.addEventListener("click", function () {
 
-    alert("Recipe saved!");
+    const recipeName = document.getElementById("recipeName").value;
+
+    if (recipeName === "") {
+
+        alert("Please enter a recipe name.");
+        return;
+    }
+
+    const recipe = {
+
+        name: recipeName,
+        shade: document.getElementById("shadeName").textContent,
+        hex: document.getElementById("hexValue").textContent,
+        rgb: document.getElementById("rgbValue").textContent,
+        drops: document.getElementById("totalDrops").textContent
+
+    };
+
+    let recipes = JSON.parse(localStorage.getItem("recipes")) || [];
+
+    recipes.push(recipe);
+
+    localStorage.setItem("recipes", JSON.stringify(recipes));
+    
+    alert("Recipe saved successfully!");
 });
 
 
@@ -211,3 +237,25 @@ mixBtn.addEventListener("click", function () {
 
 
 
+copyHexBtn.addEventListener("click", function(){
+
+    navigator.clipboard.writeText(
+        document.getElementById("hexValue").textContent
+
+    );
+
+    alert("HEX copied!");
+
+});
+
+
+copyRgbBtn.addEventListener("click", function() {
+
+    navigator.clipboard.writeText(
+        document.getElementById("rgbValue").textContent
+
+    );
+
+    alert("RGB copied!");
+
+});

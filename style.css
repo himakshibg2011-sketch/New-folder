@@ -706,3 +706,24 @@ main{
 
 }
 
+
+#copyHexBtn,
+#copyRgbBtn{
+
+    margin-left:3px;
+
+    background:#243038;
+
+    color:white;
+
+    border:none;
+
+    padding:5px 14px;
+
+    border-radius:20px;
+
+    cursor:pointer;
+
+    font-size:13px;
+    
+}
