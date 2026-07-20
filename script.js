@@ -139,7 +139,9 @@ saveBtn.addEventListener("click", function () {
         rgb: document.getElementById("rgbValue").textContent,
         drops: document.getElementById("totalDrops").textContent,
 
-        date: new Date().toLocaleString()
+        date: new Date().toISOString(),
+
+        favourite: false
 
     };
 
@@ -277,6 +279,9 @@ copyRgbBtn.addEventListener("click", function() {
 const historyContainer = document.getElementById("historyContainer");
 const clearHistoryBtn = document.getElementById("clearHistoryBtn");
 const searchInput = document.getElementById("searchInput");
+const showFavBtn = document.getElementById("showFavBtn");
+let favouritesOnly = false;
+const sortSelect = document.getElementById("sortSelect");
 
 if (historyContainer) {
 
@@ -294,12 +299,77 @@ if (searchInput) {
     
 }
 
+if (showFavBtn) {
+
+    showFavBtn.addEventListener("click", function () {
+
+        favouritesOnly = !favouritesOnly;
+
+        this.textContent = favouritesOnly
+        ? "SHOW ALL RECIPES"
+        : "SHOW FAVOURITES ❤️";
+
+        displayRecipes(
+            searchInput ? searchInput.value : ""
+
+        );
+
+    });
+
+}
+
+
+if (sortSelect) {
+
+    sortSelect.addEventListener("change", function () {
+
+        displayRecipes(
+            searchInput ? searchInput.value : ""
+
+        );
+
+    });
+
+}
+
 function displayRecipes(searchText = "") {
 
     historyContainer.innerHTML = "";
 
     let recipes =
     JSON.parse(localStorage.getItem("recipes")) || [];
+
+    if (sortSelect) {
+
+        switch (sortSelect.value) {
+
+            case "newest":
+                recipes.sort((a, b) =>
+                    new Date(b.date) - new Date(a.date)
+            );
+            break;
+
+            case "oldest":
+                recipes.sort((a, b) =>
+                new Date(a.date) - new Date(b.date)
+            );
+            break;
+
+            case "az":
+                recipes.sort((a, b) =>
+                a.name.localeCompare(b.name)
+            );
+            break;
+
+            case "za":
+                recipes.sort((a, b) =>
+                b.name.localeCompare(a.name)
+            );
+            break;
+
+        }
+
+    }
 
     if (recipes.length === 0) {
 
@@ -310,9 +380,17 @@ function displayRecipes(searchText = "") {
     }
 
     recipes
-    .filter(recipe =>
-        recipe.name.toLowerCase().includes(searchText.toLowerCase())
-    )
+    .filter(recipe => {
+
+        const matchesSearch = 
+        recipe.name.toLowerCase().includes(searchText.toLowerCase());
+
+        const matchesFavourite =
+        !favouritesOnly || recipe.favourite;
+
+        return matchesSearch && matchesFavourite;
+    })
+
     .forEach((recipe, index) => {
 
         const card = document.createElement("div");
@@ -336,7 +414,9 @@ function displayRecipes(searchText = "") {
         <p><strong>HEX:</strong> ${recipe.hex}</p>
         <p><strong>RGB:</strong> ${recipe.rgb}</p>
         <p><strong>Total Drops:</strong> ${recipe.drops}</p>
-        <p><strong>Saved:</strong> ${recipe.date}</p>
+        <p><strong>Saved:</strong> ${new Date(recipe.date).toLocaleString()}</p>
+
+        <div class="history-buttons">
         
         <button class="delete-btn"
         onclick="deleteRecipe(${index})">
@@ -344,6 +424,15 @@ function displayRecipes(searchText = "") {
         Delete Recipe
         
         </button>
+
+        <button
+        class="fav-btn"
+        onclick="toggleFavourite(${index})">
+        ${recipe.favourite ? "❤️" : "🤍"}
+        </button>
+
+        </div>
+
         `;
 
         historyContainer.appendChild(card);
@@ -368,6 +457,25 @@ function deleteRecipe(index) {
 
     displayRecipes();
 
+}
+
+function toggleFavourite(index) {
+
+    const recipes =
+    JSON.parse(localStorage.getItem("recipes")) || [];
+
+    recipes[index].favourite = !recipes[index].favourite;
+
+    localStorage.setItem(
+        "recipes",
+        JSON.stringify(recipes)
+
+    );
+
+    displayRecipes(
+        searchInput ? searchInput.value : ""
+
+    );
 }
 
 
