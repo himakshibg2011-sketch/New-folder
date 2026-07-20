@@ -380,23 +380,30 @@ function displayRecipes(searchText = "") {
     }
 
     recipes
-    .filter(recipe => {
+    .map((recipe, index) => ({ recipe, index}))
 
-        const matchesSearch = 
-        recipe.name.toLowerCase().includes(searchText.toLowerCase());
+    .filter(item => {
+
+        const matchesSearch =
+        item.recipe.name.toLowerCase().includes(searchText.toLowerCase());
 
         const matchesFavourite =
-        !favouritesOnly || recipe.favourite;
+        !favouritesOnly || item.recipe.favourite;
 
         return matchesSearch && matchesFavourite;
+
     })
 
-    .forEach((recipe, index) => {
+    .forEach(item => {
+
+        const recipe = item.recipe;
+        const index = item.index;
 
         const card = document.createElement("div");
 
         card.className = "history-card";
 
+    
         card.innerHTML = `
         <div class="history-top">
         
