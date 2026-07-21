@@ -12,6 +12,85 @@ const copyHexBtn = document.getElementById("copyHexBtn");
 const copyRgbBtn = document.getElementById("copyRgbBtn");
 
 
+function saveDraft() {
+
+    const draft = {
+
+        recipeName: document.getElementById("recipeName").value,
+        paintCount: paintNumber,
+        paints: [],
+
+        preview: document.getElementById("colourPreview").style.background,
+        hex: document.getElementById("hexValue").textContent,
+        rgb: document.getElementById("rgbValue").textContent,
+        drops: document.getElementById("totalDrops").textContent,
+        shade: document.getElementById("shadeName").textContent
+
+    };
+
+    document.querySelectorAll(".paint-box").forEach(box => {
+        draft.paints.push({
+
+            colour: box.querySelector(".paintColour").value,
+            drops: box.querySelector(".paintDrops").value
+
+        });
+    });
+
+    localStorage.setItem("draftRecipe", JSON.stringify(draft));
+
+}
+
+
+function loadDraft() {
+
+    const draft =
+    JSON.parse(localStorage.getItem("draftRecipe"));
+
+    if(!draft) return;
+
+    document.getElementById("recipeName").value = draft.recipeName;
+    paintCountInput.value = draft.paintCount;
+
+    paintContainer.innerHTML = "";
+    paintNumber =0;
+
+    draft.paints.forEach(paint => {
+
+        paintNumber++;
+        createPaintBox(paintNumber);
+
+        const boxes =
+        document.querySelectorAll(".paint-box");
+
+        const current = boxes[boxes.length - 1];
+
+        current.querySelector(".paintColour").value =
+        paint.colour;
+
+        current.querySelector(".paintDrops").value =
+        paint.drops;
+
+        document.getElementById("colourPreview").style.background = draft.preview || "white";
+
+        document.getElementById("hexValue").textContent =
+        draft.hex || "-";
+
+        document.getElementById("rgbValue").textContent =
+        draft.rgb || "-";
+
+        document.getElementById("totalDrops").textContent =
+        draft.drops || "-";
+
+        document.getElementById("shadeName").textContent =
+        draft.shade || "-";
+
+
+    });
+
+}
+
+
 function createPaintBox(number) {
 
     const box = document.createElement("div");
@@ -44,9 +123,18 @@ function createPaintBox(number) {
 
      paintContainer.appendChild(box);
 
+     box.querySelector(".paintColour").addEventListener("input", saveDraft);
+     box.querySelector(".paintDrops").addEventListener("input", saveDraft);
+
 }
 
 if (createBtn) {
+
+    loadDraft();
+
+    document.getElementById("recipeName")
+    .addEventListener("input", saveDraft);
+
 
 createBtn.addEventListener("click", function () {
 
@@ -66,6 +154,9 @@ createBtn.addEventListener("click", function () {
     createPaintBox(paintNumber);
 
     }
+
+    saveDraft();
+
 });
 
 
@@ -74,6 +165,8 @@ addBtn.addEventListener("click", function () {
     paintNumber++;
 
     createPaintBox(paintNumber);
+
+    saveDraft();
 
 });
 
@@ -86,6 +179,8 @@ removeBtn.addEventListener("click", function () {
 
         paintBoxes[paintBoxes.length - 1].remove();
         paintNumber--;
+
+        saveDraft();
 
     } else {
         alert("There are no paint boxes to remove.");
@@ -107,8 +202,10 @@ clearBtn.addEventListener("click", function () {
         paintContainer.innerHTML = "";
 
         paintNumber = 0;
+        localStorage.removeItem("draftRecipe");
 
         document.getElementById("colourPreview").style.background = "white";
+        document.getElemnt
 
     }
 
@@ -150,6 +247,7 @@ saveBtn.addEventListener("click", function () {
     recipes.push(recipe);
 
     localStorage.setItem("recipes", JSON.stringify(recipes));
+    localStorage.removeItem("draftRecipe");
     
     alert("Recipe saved successfully!");
 });
@@ -244,6 +342,8 @@ mixBtn.addEventListener("click", function () {
     document.getElementById("totalDrops").textContent = totalDrops;
 
     document.getElementById("shadeName").textContent = "Custom Shade";
+
+    saveDraft();
 
 });
 

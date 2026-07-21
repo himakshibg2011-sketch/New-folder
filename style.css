@@ -299,7 +299,7 @@ main{
 
     text-align:center;
 
-    padding: 35px 0px;
+    padding: 15px 0px;
 
     margin-top: 0px;
 
@@ -933,6 +933,8 @@ main{
 
     padding:12px;
 
+    margin-left: 880px;
+
     border:3px solid #243038;
 
     border-radius:20px;
@@ -1015,3 +1017,5 @@ main{
     transform:scale(1.05);
 
 }
+
+
