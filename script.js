@@ -426,7 +426,7 @@ function displayRecipes(searchText = "") {
         <div class="history-buttons">
         
         <button class="delete-btn"
-        onclick="deleteRecipe(${index})">
+        onclick="deleteRecipe('${recipe.date}')">
         
         Delete Recipe
         
@@ -434,7 +434,7 @@ function displayRecipes(searchText = "") {
 
         <button
         class="fav-btn"
-        onclick="toggleFavourite(${index})">
+        onclick="toggleFavourite('${recipe.date}')">
         ${recipe.favourite ? "❤️" : "🤍"}
         </button>
 
@@ -449,12 +449,12 @@ function displayRecipes(searchText = "") {
 }
 
 
-function deleteRecipe(index) {
+function deleteRecipe(date) {
 
-    const recipes =
+    let recipes =
     JSON.parse(localStorage.getItem("recipes")) || [];
 
-    recipes.splice(index, 1);
+    recipes = recipes.filter(r => r.date !== date);
 
     localStorage.setItem(
         "recipes",
@@ -466,12 +466,17 @@ function deleteRecipe(index) {
 
 }
 
-function toggleFavourite(index) {
+function toggleFavourite(date) {
 
     const recipes =
     JSON.parse(localStorage.getItem("recipes")) || [];
 
-    recipes[index].favourite = !recipes[index].favourite;
+    const recipe = recipes.find(r => r.date === date);
+
+    if(recipe) {
+        recipe.favourite = !recipe.favourite;
+
+    }
 
     localStorage.setItem(
         "recipes",
