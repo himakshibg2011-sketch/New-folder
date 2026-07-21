@@ -289,7 +289,7 @@ mixBtn.addEventListener("click", function () {
         let colour = colours[i].value.trim();
         let drop = parseInt(drops[i].value);
 
-        if (isNaN(drops) || drop <= 0) {
+        if (isNaN(drop) || drop <= 0) {
             alert("Please enter a valid number of drops :(.");
             return;
         }
