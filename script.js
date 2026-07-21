@@ -71,6 +71,8 @@ function loadDraft() {
         current.querySelector(".paintDrops").value =
         paint.drops;
 
+    });
+
         document.getElementById("colourPreview").style.background = draft.preview || "white";
 
         document.getElementById("hexValue").textContent =
@@ -86,7 +88,7 @@ function loadDraft() {
         draft.shade || "-";
 
 
-    });
+    
 
 }
 
@@ -199,13 +201,19 @@ clearBtn.addEventListener("click", function () {
 
         });
 
+        localStorage.removeItem("draftRecipe");
+
         paintContainer.innerHTML = "";
 
         paintNumber = 0;
-        localStorage.removeItem("draftRecipe");
-
+        paintCountInput.value = "";
+        document.getElementById("recipeName").value = "";
+        
         document.getElementById("colourPreview").style.background = "white";
-        document.getElemnt
+        document.getElementById("hexValue").textContent = "-";
+        document.getElementById("rgbValue").textContent = "-";
+        document.getElementById("totalDrops").textContent = "-";
+        document.getElementById("shadeName").textContent = "-";
 
     }
 
@@ -248,8 +256,20 @@ saveBtn.addEventListener("click", function () {
 
     localStorage.setItem("recipes", JSON.stringify(recipes));
     localStorage.removeItem("draftRecipe");
+
+    paintContainer.innerHTML = "";
+    paintNumber = 0;
+
+    paintCountInput.value = "";
+    document.getElementById("recipeName").value = "";
+
+    document.getElementById("colourPreview").style.background = "white";
+    document.getElementById("hexValue").textContent = "-";
+    document.getElementById("rgbValue").textContent = "-";
+    document.getElementById("totalDrops").textContent = "-";
+    document.getElementById("shadeName").textContent = "-";
     
-    alert("Recipe saved successfully!");
+    alert("Recipe saved successfully yayyy :D");
 });
 
 
@@ -269,12 +289,18 @@ mixBtn.addEventListener("click", function () {
         let colour = colours[i].value.trim();
         let drop = parseInt(drops[i].value);
 
+        if (isNaN(drops) || drop <= 0) {
+            alert("Please enter a valid number of drops :(.");
+            return;
+        }
+
         let r, g, b;
 
         if (colour.startsWith("#")) {
 
-            if (colour.length !==7) {
-                alert("Invalid HEX colour.");
+            if (!/^#[0-9A-Fa-f]{6}$/.test(colour)) {
+                alert("Invalid HEX colour. :(");
+            
                 return;
             }
 
