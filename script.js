@@ -444,16 +444,19 @@ const showFavBtn = document.getElementById("showFavBtn");
 let favouritesOnly = false;
 const sortSelect = document.getElementById("sortSelect");
 
+let currentPage =1;
+const recipesPerPage =5;
+
 if (historyContainer) {
-
     displayRecipes();
-
 }
+
 
 if (searchInput) {
 
     searchInput.addEventListener("input", function () {
 
+        currentPage = 1;
         displayRecipes(this.value);
 
     });
@@ -540,7 +543,7 @@ function displayRecipes(searchText = "") {
         return;
     }
 
-    recipes
+    const filteredRecipes = recipes
     .map((recipe, index) => ({ recipe, index}))
 
     .filter(item => {
@@ -553,9 +556,15 @@ function displayRecipes(searchText = "") {
 
         return matchesSearch && matchesFavourite;
 
-    })
+    });
 
-    .forEach(item => {
+    const start = (currentPage - 1) * recipesPerPage;
+    const end = start + recipesPerPage;
+
+    const pageRecipes = filteredRecipes.slice(start, end);
+
+
+    pageRecipes.forEach(item => {
 
         const recipe = item.recipe;
         const index = item.index;
@@ -612,6 +621,34 @@ function displayRecipes(searchText = "") {
         historyContainer.appendChild(card);
 
     });
+
+    const pagination = document.getElementById("pagination");
+    pagination.innerHTML = "";
+
+    const totalPages =
+    Math.ceil(filteredRecipes.length / recipesPerPage);
+
+    for (let i = 1; i <= totalPages; i++) {
+
+        const button = document.createElement("button");
+
+        button.textContent = i;
+
+        if (i === currentPage) {
+            button.classList.add("active-page");
+
+        }
+
+        button.onclick = function () {
+
+            currentPage = i;
+            displayRecipes(searchInput ? searchInput.value : "");
+
+        };
+
+        pagination.appendChild(button);
+
+    }
 
 }
 
