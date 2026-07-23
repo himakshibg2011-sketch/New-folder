@@ -24,7 +24,7 @@ function saveDraft() {
         hex: document.getElementById("hexValue").textContent,
         rgb: document.getElementById("rgbValue").textContent,
         drops: document.getElementById("totalDrops").textContent,
-        shade: document.getElementById("shadeName").textContent
+        shade: document.getElementById("shadeInput").value
 
     };
 
@@ -84,6 +84,9 @@ function loadDraft() {
         document.getElementById("totalDrops").textContent =
         draft.drops || "-";
 
+        document.getElementById("shadeInput").value =
+        draft.shade || "";
+
         document.getElementById("shadeName").textContent =
         draft.shade || "-";
 
@@ -136,6 +139,10 @@ if (createBtn) {
 
     document.getElementById("recipeName")
     .addEventListener("input", saveDraft);
+
+    document.getElementById("shadeInput")
+    .addEventListener("input", saveDraft);
+
 
 
 createBtn.addEventListener("click", function () {
@@ -208,6 +215,7 @@ clearBtn.addEventListener("click", function () {
         paintNumber = 0;
         paintCountInput.value = "";
         document.getElementById("recipeName").value = "";
+        document.getElementById("shadeInput").value = "";
         
         document.getElementById("colourPreview").style.background = "white";
         document.getElementById("hexValue").textContent = "-";
@@ -236,10 +244,19 @@ saveBtn.addEventListener("click", function () {
 
     }
 
+
+    const shadeName =
+    document.getElementById("shadeInput").value.trim();
+
+    if (shadeName === "") {
+        alert("Pls enter a cutsies shade name.");
+        return;
+    }
+
     const recipe = {
 
         name: recipeName,
-        shade: document.getElementById("shadeName").textContent,
+        shade: shadeName,
         hex: document.getElementById("hexValue").textContent,
         rgb: document.getElementById("rgbValue").textContent,
         drops: document.getElementById("totalDrops").textContent,
@@ -252,6 +269,20 @@ saveBtn.addEventListener("click", function () {
 
     let recipes = JSON.parse(localStorage.getItem("recipes")) || [];
 
+    const duplicate = recipes.some(r =>
+        r.name.trim().toLowerCase() === recipeName.toLowerCase()
+
+    );
+
+    if (duplicate) {
+        alert("A recipe with this name alrdy exists. pls choose another name :(")
+        return;
+
+    }
+
+    document.getElementById("recipeName").style.border = "";
+    
+
     recipes.push(recipe);
 
     localStorage.setItem("recipes", JSON.stringify(recipes));
@@ -262,6 +293,7 @@ saveBtn.addEventListener("click", function () {
 
     paintCountInput.value = "";
     document.getElementById("recipeName").value = "";
+    document.getElementById("shadeInput").value = "";
 
     document.getElementById("colourPreview").style.background = "white";
     document.getElementById("hexValue").textContent = "-";
@@ -367,7 +399,10 @@ mixBtn.addEventListener("click", function () {
 
     document.getElementById("totalDrops").textContent = totalDrops;
 
-    document.getElementById("shadeName").textContent = "Custom Shade";
+   const shadeInput = document.getElementById("shadeInput").value.trim();
+
+   document.getElementById("shadeName").textContent =
+   shadeInput === "" ? "Custom Shade" : shadeInput;
 
     saveDraft();
 
