@@ -267,7 +267,7 @@ saveBtn.addEventListener("click", function () {
 
     };
 
-    let recipes = JSON.parse(localStorage.getItem("recipes")) || [];
+    const recipes = JSON.parse(localStorage.getItem("recipes")) || [];
 
     const duplicate = recipes.some(r =>
         r.name.trim().toLowerCase() === recipeName.toLowerCase()
@@ -585,6 +585,12 @@ function displayRecipes(searchText = "") {
         <p><strong>Saved:</strong> ${new Date(recipe.date).toLocaleString()}</p>
 
         <div class="history-buttons">
+
+        <button
+        class="edit-btn"
+        onclick="editRecipe('${recipe.date}')">
+        Edit
+        </button>
         
         <button class="delete-btn"
         onclick="deleteRecipe('${recipe.date}')">
@@ -649,6 +655,78 @@ function toggleFavourite(date) {
         searchInput ? searchInput.value : ""
 
     );
+}
+
+
+function editRecipe(date) {
+
+    let recipes =
+    JSON.parse(localStorage.getItem("recipes")) || [];
+
+    const recipe = recipes.find(r => r.date === date);
+
+    if (!recipe) return;
+
+    const newName = prompt(
+        "Edit recipe name:",
+        recipe.name
+
+    );
+
+    if (newName === null) return;
+
+    const trimmedName = newName.trim();
+
+    if (trimmedName === "") {
+
+        alert("Recipe name cannot be empty duhh.");
+        return;
+
+    }
+
+    const duplicate = recipes.some(r =>
+        r.date !== date &&
+        r.name.trim().toLowerCase() === trimmedName.toLowerCase()
+
+    );
+
+    if (duplicate) {
+        alert("Another recipe alrdy has that name, be creative name it smth else.");
+        return;
+
+    }
+
+    const newShade = prompt(
+        "Edit shade name:",
+        recipe.shade
+    );
+
+    if (newShade === null) return;
+
+    const trimmedShade = newShade.trim();
+
+    if (trimmedShade === "") {
+        alert("Shade name can't be empty dumbo.");
+        return;
+
+    }
+
+    recipe.name = trimmedName;
+    recipe.shade = trimmedShade;
+
+    localStorage.setItem(
+        "recipes",
+        JSON.stringify(recipes)
+
+    );
+
+    alert("Recipe updates successfully yayy :D");
+
+    displayRecipes(
+        searchInput ? searchInput.value : ""
+
+    );
+
 }
 
 
