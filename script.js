@@ -473,6 +473,8 @@ if (showFavBtn) {
         ? "SHOW ALL RECIPES"
         : "SHOW FAVOURITES ❤️";
 
+        currentPage = 1;
+        
         displayRecipes(
             searchInput ? searchInput.value : ""
 
@@ -486,6 +488,8 @@ if (showFavBtn) {
 if (sortSelect) {
 
     sortSelect.addEventListener("change", function () {
+
+        currentPage = 1;
 
         displayRecipes(
             searchInput ? searchInput.value : ""
@@ -666,7 +670,18 @@ function deleteRecipe(date) {
 
     );
 
-    displayRecipes();
+    const totalPages =
+    Math.ceil(recipes.length / recipesPerPage);
+
+    if (currentPage > totalPages) {
+        currentPage = Math.max(1, totalPages);
+
+    }
+
+
+    displayRecipes(
+        searchInput ? searchInput.value : ""
+    );
 
 }
 
