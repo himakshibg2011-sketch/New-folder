@@ -798,24 +798,27 @@ if (clearHistoryBtn) {
 }
 
 const cat = document.getElementById("cat");
-
 const meow = document.getElementById("meowSound");
 
+if (cat && meow) {
 
-cat.addEventListener("mouseenter", function () {
+    cat.addEventListener("mouseenter", function () {
+        meow.currentTime =0;
+        meow.play();
 
-    meow.currentTime = 0;
-    meow.play();
+    });
 
-});
-
-cat.addEventListener("click", function () {
-    makeSplash();
-
-});
-
+    cat.addEventListener("click", function () {
+        makeSplash();
+    });
+    
+}
 
 function makeSplash() {
+
+    if (!cat || !document.querySelector(".hero-banner")) return;
+
+    if (!hero) return;
 
     const colours = [
 
@@ -835,7 +838,6 @@ function makeSplash() {
     splash.style.background =
     colours[Math.floor(Math.random() * colours.length)];
 
-    const cat = document.getElementById("cat");
     const hero = document.querySelector(".hero-banner");
 
 
@@ -867,5 +869,29 @@ function makeSplash() {
 
     }, 900);
 
+
+}
+
+
+const paw = document.getElementById("pawButton");
+const recipeCat = document.getElementById("cat");
+const recipeMeow = document.getElementById("meowSound");
+
+if (paw && recipeCat && recipeMeow) {
+
+    paw.addEventListener("mouseenter", () => {
+
+        recipeCat.style.transform = "translateY(-70px)";
+
+        recipeMeow.currentTime = 0;
+        recipeMeow.play();
+
+    });
+
+    paw.addEventListener("mouseleave", () => {
+
+        recipeCat.style.transform = "translateY(120px)";
+
+    });
 
 }

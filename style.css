@@ -1159,3 +1159,54 @@ main{
     }
 
 }
+
+
+.recipe-container{
+    position:relative;
+    overflow:hidden;
+
+}
+
+
+.recipe-wrapper{
+
+    position:absolute;
+    top:15px;
+    left:20px;
+
+    width:120px;
+    height:150px;
+
+    overflow:visible;
+
+    z-index:100;
+
+}
+
+
+.paw-button{
+    width:60px;
+    cursor:pointer;
+    position:absolute;
+    z-index:10;
+    top:40px;
+    left:25px;
+
+}
+
+
+.recipe-cat{
+    position:absolute;
+    width:120px;
+
+    left:-5px;
+
+    top:40px;
+
+    transform:translateY(120px);
+    transition:.45s ease;
+    z-index:5;
+
+    pointer-events:none;
+
+}
