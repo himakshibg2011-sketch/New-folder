@@ -796,3 +796,76 @@ if (clearHistoryBtn) {
     });
 
 }
+
+const cat = document.getElementById("cat");
+
+const meow = document.getElementById("meowSound");
+
+
+cat.addEventListener("mouseenter", function () {
+
+    meow.currentTime = 0;
+    meow.play();
+
+});
+
+cat.addEventListener("click", function () {
+    makeSplash();
+
+});
+
+
+function makeSplash() {
+
+    const colours = [
+
+        "#FF6B6B",
+        "#FFD93D",
+        "#6BCB77",
+        "#4D96FF",
+        "#C77DFF",
+        "#FF9F1C",
+        "#FF66C4"
+    ];
+
+    const splash = document.createElement("div");
+
+    splash.className = "paint-splash";
+
+    splash.style.background =
+    colours[Math.floor(Math.random() * colours.length)];
+
+    const cat = document.getElementById("cat");
+    const hero = document.querySelector(".hero-banner");
+
+
+    const catRect = cat.getBoundingClientRect();
+    const heroRect = hero.getBoundingClientRect();
+
+    const angle = Math.random() * Math.PI * 2;
+
+    const distance = 80 + Math.random() * 60;
+
+    const x =
+    catRect.left - heroRect.left +
+    catRect.width / 2 +
+    Math.cos(angle) * distance;
+
+
+    const y =
+    catRect.top - heroRect.top +
+    catRect.height / 2 +
+    Math.sin(angle) * distance;
+
+    splash.style.left = `${x}px`;
+    splash.style.top = `${y}px`;
+
+    hero.appendChild(splash);
+
+    setTimeout(() => {
+        splash.remove();
+
+    }, 900);
+
+
+}
