@@ -22,7 +22,8 @@ The Recipe maker helps artists and painters and create their own recipes or shad
 - It can also sort out recipies for u 
 - I also added pagination hehehe
 - Copy HEX and RGB values of ur output colorrr
--Name your output color as u wish
+- Name your output color as u wish
+- Oh also there is a cat in home and recipe page hover and click it to find out what happens hehehe
 
 ---
 
