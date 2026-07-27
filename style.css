@@ -1171,15 +1171,13 @@ main{
 .recipe-wrapper{
 
     position:absolute;
-    top:15px;
-    left:20px;
+    top:-25px;
+    left:25px;
 
-    width:120px;
+    width:150px;
     height:150px;
 
-    overflow:visible;
-
-    z-index:100;
+    z-index:999;
 
 }
 
@@ -1188,9 +1186,10 @@ main{
     width:60px;
     cursor:pointer;
     position:absolute;
-    z-index:10;
-    top:40px;
-    left:25px;
+    z-index:30;
+    top:35px;
+    left:32px;
+    z-index:1000;
 
 }
 
@@ -1199,14 +1198,22 @@ main{
     position:absolute;
     width:120px;
 
-    left:-5px;
+    left:0px;
 
-    top:40px;
+    top:0px;
 
-    transform:translateY(120px);
-    transition:.45s ease;
-    z-index:5;
+    transform:translateY(-80px);
+    transition:transform .45s ease;
 
-    pointer-events:none;
+    pointer-events: none;
+    z-index:999;
 
+
+}
+
+
+.recipe-area{
+    position: relative;
+    width: 65%;
+    margin: auto;
 }

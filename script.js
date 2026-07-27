@@ -797,18 +797,18 @@ if (clearHistoryBtn) {
 
 }
 
-const cat = document.getElementById("cat");
-const meow = document.getElementById("meowSound");
+const homeCat = document.getElementById("homeCat");
+const homeMeow = document.getElementById("homeMeow");
 
-if (cat && meow) {
+if (homeCat && homeMeow) {
 
-    cat.addEventListener("mouseenter", function () {
-        meow.currentTime =0;
-        meow.play();
+    homeCat.addEventListener("mouseenter", function () {
+        homeMeow.currentTime =0;
+        homeMeow.play();
 
     });
 
-    cat.addEventListener("click", function () {
+    homeCat.addEventListener("click", function () {
         makeSplash();
     });
     
@@ -816,12 +816,11 @@ if (cat && meow) {
 
 function makeSplash() {
 
-    if (!cat || !document.querySelector(".hero-banner")) return;
+    const hero = document.querySelector(".hero-banner");
 
-    if (!hero) return;
+    if (!homeCat || !hero) return;
 
     const colours = [
-
         "#FF6B6B",
         "#FFD93D",
         "#6BCB77",
@@ -838,50 +837,40 @@ function makeSplash() {
     splash.style.background =
     colours[Math.floor(Math.random() * colours.length)];
 
-    const hero = document.querySelector(".hero-banner");
-
-
-    const catRect = cat.getBoundingClientRect();
+    const catRect = homeCat.getBoundingClientRect();
     const heroRect = hero.getBoundingClientRect();
 
     const angle = Math.random() * Math.PI * 2;
-
     const distance = 80 + Math.random() * 60;
 
     const x =
-    catRect.left - heroRect.left +
-    catRect.width / 2 +
-    Math.cos(angle) * distance;
-
+        catRect.left - heroRect.left +
+        catRect.width / 2 +
+        Math.cos(angle) * distance;
 
     const y =
-    catRect.top - heroRect.top +
-    catRect.height / 2 +
-    Math.sin(angle) * distance;
+        catRect.top - heroRect.top +
+        catRect.height / 2 +
+        Math.sin(angle) * distance;
 
     splash.style.left = `${x}px`;
     splash.style.top = `${y}px`;
 
     hero.appendChild(splash);
 
-    setTimeout(() => {
-        splash.remove();
-
-    }, 900);
-
-
+    setTimeout(() => splash.remove(), 900);
 }
 
 
 const paw = document.getElementById("pawButton");
-const recipeCat = document.getElementById("cat");
-const recipeMeow = document.getElementById("meowSound");
+const recipeCat = document.getElementById("recipeCat");
+const recipeMeow = document.getElementById("recipeMeow");
 
 if (paw && recipeCat && recipeMeow) {
 
     paw.addEventListener("mouseenter", () => {
 
-        recipeCat.style.transform = "translateY(-70px)";
+        recipeCat.style.transform = "translateY(0)";
 
         recipeMeow.currentTime = 0;
         recipeMeow.play();
@@ -890,7 +879,7 @@ if (paw && recipeCat && recipeMeow) {
 
     paw.addEventListener("mouseleave", () => {
 
-        recipeCat.style.transform = "translateY(120px)";
+        recipeCat.style.transform = "translateY(-80px)";
 
     });
 
