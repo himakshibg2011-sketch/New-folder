@@ -1161,25 +1161,27 @@ main{
 }
 
 
+
+.recipe-wrapper{
+    position:absolute;
+    top:0;
+    left:0;
+    width:140px;
+    height:140px;
+
+    overflow:hidden;
+
+    z-index:5;
+
+}
 .recipe-container{
     position:relative;
     overflow:hidden;
+    z-index: 20;
 
 }
 
 
-.recipe-wrapper{
-
-    position:absolute;
-    top:-25px;
-    left:25px;
-
-    width:150px;
-    height:150px;
-
-    z-index:999;
-
-}
 
 
 .paw-button{
@@ -1187,26 +1189,29 @@ main{
     cursor:pointer;
     position:absolute;
     z-index:30;
-    top:35px;
+    top:0px;
     left:32px;
-    z-index:1000;
+    z-index:50;
 
 }
 
 
 .recipe-cat{
     position:absolute;
-    width:120px;
+    width:110px;
 
-    left:0px;
+    left:160px;
 
-    top:0px;
+    top: -5px;
+    bottom:-110px;
 
-    transform:translateY(-80px);
+    transform:translateY(110px);
     transition:transform .45s ease;
 
     pointer-events: none;
-    z-index:999;
+    z-index:10;
+
+
 
 
 }
