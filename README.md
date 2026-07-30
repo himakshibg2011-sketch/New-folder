@@ -25,81 +25,35 @@ The Recipe maker helps artists and painters and create their own recipes or shad
 - Name your output color as u wish
 - Oh also there is a cat in home and recipe page hover and click it to find out what happens hehehe
 
----
 
-## 🛠️ Technologies Used
+
+## Languages and technologies used
 
 - HTML5
 - CSS3
 - JavaScript (Vanilla JS)
 - Local Storage API
 
----
 
-## 🚀 How to Use
+## How to Use
 
 1. Enter the number of paints.
 2. Click **Generate**.
-3. Enter each paint's HEX or RGB colour.
-4. Enter the number of drops.
-5. Click **Mix Colours**.
-6. Enter a recipe name.
-7. Enter a shade name.
-8. Save the recipe.
-9. View and manage recipes from the History page.
+3. Enter each paint's HEX or RGB colour as per ur wish.
+4. Then enter the number of drops.
+5. And then again click, **Mix Colours**.
+6. Enter a peak recipe name.
+7. Oh don't forget to enter a fire shade name too.
+8. Then save the recipe.
+9. View and edit recipes from the History page. (you can also favourite ur recipes for quick access :D)
 
----
 
-## 📂 Project Structure
-
-```text
-Paint-Recipe-Generator/
-│
-├── index.html
-├── history.html
-├── style.css
-├── script.js
-├── README.md
-└── LICENSE
-```
-
----
-
-## 📸 Screenshots
-
-### Home Page
-
-(Add screenshot here)
-
-### History Page
-
-(Add screenshot here)
-
-### Colour Mixing
-
-(Add screenshot here)
-
----
-
-## 🔮 Future Improvements
-
-- Export recipes as PDF
-- Import/Export recipes
-- Dark mode
-- CMYK support
-- HSL support
-- Colour harmony suggestions
-
----
-
-## 📄 License
+## License
 
 This project is licensed under the **MIT License**.
 
----
 
-## 👩‍💻 Author
+## Credits
 
-**Your Name**
+**Obvsly thats me Sunshine and Rainbows**
 
-GitHub: https://github.com/yourusername
