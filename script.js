@@ -870,7 +870,7 @@ if (paw && recipeCat && recipeMeow) {
 
     paw.addEventListener("mouseenter", () => {
 
-        recipeCat.style.transform = "translateY(-180px)";
+        recipeCat.style.transform = "translateY(-87px)";
 
         recipeMeow.currentTime = 0;
         recipeMeow.play();
