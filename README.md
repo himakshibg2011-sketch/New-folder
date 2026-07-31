@@ -48,7 +48,7 @@ The Recipe maker helps artists and painters and create their own recipes or shad
 9. View and edit recipes from the History page. (you can also favourite ur recipes for quick access :D)
 
 
-##Ai usage
+## Ai usage
 
 I only used ai for a very mins to help me give the command to push and pull my projects as I was having trouble doing it.
 
