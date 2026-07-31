@@ -65,4 +65,4 @@ This project is licensed under the **MIT License**.
 
 PS(there were 2 commits done by me for testing if it pulled and pushed to git perfectly and 1 commit for just fixing a very small typo sry.)
 
-Hope u like my *FIRST* website hehe..
+Hope u like my *FIRST* website teehee..
