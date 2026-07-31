@@ -50,7 +50,7 @@ The Recipe maker helps artists and painters and create their own recipes or shad
 
 ## Ai usage
 
-I only used ai for a very mins to help me give the command to push and pull my projects as I was having trouble doing it.
+I only used ai for a very few mins to help me give the command to push and pull my projects as I was having trouble doing it.
 
 
 ## License
