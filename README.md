@@ -48,6 +48,11 @@ The Recipe maker helps artists and painters and create their own recipes or shad
 9. View and edit recipes from the History page. (you can also favourite ur recipes for quick access :D)
 
 
+##Ai usage
+
+I only used ai for a very mins to help me give the command to push and pull my projects as I was having trouble doing it.
+
+
 ## License
 
 This project is licensed under the **MIT License**.
@@ -56,5 +61,8 @@ This project is licensed under the **MIT License**.
 ## Credits
 
 **Obvsly thats me Sunshine and Rainbows**
+
+
+PS(there were 2 commits done by me for testing if it pulled and pushed to git perfectly and 1 commit for just fixing a very small typo sry.)
 
 Hope u like my *FIRST* website hehe..
