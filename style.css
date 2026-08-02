@@ -104,7 +104,7 @@ header{
 
 main{
 
-    padding-top:40px;
+    padding-top:0px;
 }
 
 .hero-image{
@@ -119,13 +119,13 @@ main{
 
     width:100%;
     background: #243038;
-    padding: 60px 0;
-    ;
+    padding: 0px 0;
+    
 }
 
 .how-to-use{
 
-    width:80%;
+    width:0%;
     margin:0 auto;
     color:white;
 
@@ -150,14 +150,14 @@ main{
 .divider{
 
     width:100%;
-    height:230px;
+    height:170px;
     background: #243038;
 }
 
 
 .about-section{
 
-    margin-top: 200px;
+    margin-top: 260px;
     text-align: center;
 }
 
@@ -171,6 +171,7 @@ main{
     text-transform: uppercase;
     font-weight: normal;
     font-weight: 800;
+    margin-top: 0px;
 }
 
 
@@ -1225,7 +1226,7 @@ main{
 
 
 .painting-display{
-    position: relative;
+    position: absolute;
     width: 450px;
     top: 1250px;
     right: -880px;
