@@ -53,6 +53,11 @@ The Recipe maker helps artists and painters and create their own recipes or shad
 I only used ai for a very few mins to help me give the command to push and pull my projects as I was having trouble doing it.
 
 
+## Lapse usage
+
+I used lapse to design the picture for my homepage, the format for my website, the cat and its paws and the image format (the image was a free asset but not the frame and only this image was the free asset in my whole website.)
+
+
 ## License
 
 This project is licensed under the **MIT License**.
